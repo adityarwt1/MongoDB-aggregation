@@ -5,12 +5,18 @@ import { NextResponse } from "next/server";
 export async function POST(req: NextResponse) {
   try {
     await connectDb();
-    const { name, email, age } = await req.json();
-    if (!name || !email || !age) {
+    const { firstname, lastname, email, age, username } = await req.json();
+    if (!firstname || !email || !age) {
       return NextResponse.json({ message: "Bad request" }, { status: 400 });
     }
-
-    new User({ name, email, age }).save();
+    const user = new User({
+      firstname,
+      lastname,
+      email,
+      age,
+      username,
+    });
+    await user.save();
 
     return NextResponse.json(
       { message: "user created successfully" },
