@@ -1,8 +1,8 @@
 import { connectDb } from "@/lib/mongoose";
 import User from "@/models/user";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: NextResponse) {
+export async function POST(req: NextRequest) {
   try {
     await connectDb();
     const { firstname, lastname, email, age, username } = await req.json();
