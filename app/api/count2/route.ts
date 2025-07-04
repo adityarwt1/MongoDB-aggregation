@@ -2,7 +2,7 @@ import { connectDb } from "@/lib/mongoose";
 import User from "@/models/user";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: NextRequest) {
+export async function GET(req: NextRequest) {
   try {
     await connectDb();
     const users = await User.aggregate([{ $count: "totalDocs" }]);

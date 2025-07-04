@@ -3,7 +3,7 @@ import User from "@/models/user";
 import mongoose from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: NextRequest) {
+export async function GET(req: NextRequest) {
   try {
     await connectDb();
 
